@@ -7,7 +7,6 @@
 .env
 application.properties
 application-local.properties
-/target/
 .idea/
 
 *.log
