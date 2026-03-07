@@ -16,12 +16,11 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String cuisineType;
 
     private String city;
     private String street;
     private String streetNumber;
-
-    private String cuisineType;
 
     @OneToMany(
             mappedBy = "restaurant",
