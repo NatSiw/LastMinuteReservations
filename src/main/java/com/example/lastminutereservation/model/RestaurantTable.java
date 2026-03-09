@@ -5,9 +5,7 @@ import lombok.*;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 public class RestaurantTable {
 
     @Id
