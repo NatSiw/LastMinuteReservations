@@ -2,9 +2,8 @@ package com.example.lastminutereservation.controller;
 
 import com.example.lastminutereservation.model.RestaurantTable;
 import com.example.lastminutereservation.service.RestaurantTableService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.lastminutereservation.dto.RestaurantTableRequest;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,20 @@ public class RestaurantTableController {
     @GetMapping
     public List<RestaurantTable> getAllRestaurantTables() {
         return restaurantTableService.getAllRestaurantTables();
+    }
+
+    @GetMapping("/{id}")
+    public RestaurantTable getRestaurantTableById(@PathVariable Long id) {
+        return restaurantTableService.getRestaurantTableById(id);
+    }
+
+    @PostMapping
+    public RestaurantTable createRestaurantTable(@RequestBody RestaurantTable restaurantTable) {
+        return restaurantTableService.saveRestaurantTable(restaurantTable);
+    }
+
+    @PostMapping("/bulk")
+    public List<RestaurantTable> createRestaurantTables(@RequestBody List<RestaurantTableRequest> requests) {
+        return restaurantTableService.saveRestaurantTables(requests);
     }
 }

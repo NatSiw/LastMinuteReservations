@@ -1,9 +1,8 @@
 package com.example.lastminutereservation.controller;
 import com.example.lastminutereservation.model.Restaurant;
 import com.example.lastminutereservation.service.RestaurantService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -18,5 +17,15 @@ public class RestaurantController {
     @GetMapping
     public List<Restaurant> getAllRestaurants() {
         return restaurantService.getAllRestaurants();
+    }
+
+    @PostMapping
+    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
+        return restaurantService.saveRestaurant(restaurant);
+    }
+
+    @PostMapping("/bulk")
+    public List<Restaurant> createRestaurants(@RequestBody List<Restaurant> restaurants) {
+        return restaurantService.saveRestaurants(restaurants);
     }
 }
